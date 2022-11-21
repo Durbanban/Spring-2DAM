@@ -3,6 +3,7 @@ package com.openwebinars.restwebservice.controller;
 import com.openwebinars.restwebservice.model.Country;
 import com.openwebinars.restwebservice.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class CountryController {
+public class
+CountryController {
 
     @Autowired
     private CountryRepository repo;
 
     @GetMapping("/country")
-    public List<Country> getAllCountries() {
-        return repo.findAll();
+    public ResponseEntity<List<Country>> getAllCountries() {
+        return ResponseEntity.status(HttpStatus.OK).body(repo.findAll());
     }
 
     @GetMapping("/country/{code}")

@@ -1,0 +1,17 @@
+package com.salesianostriana.dam.primerejemplo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MainController {
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "HelloWorld";
+    }
+
+    @GetMapping("/")
+    public String index() { return "Bienvenido";}
+
+
+}
