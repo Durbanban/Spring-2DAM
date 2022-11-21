@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Currency;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,13 +31,32 @@ public class CountryController {
     }
 
     @PostMapping("/country/")
-    public ResponseEntity<Country> newCountry (@RequestBody Country country) {
+    public ResponseEntity<Country> newCountry(@RequestBody Country country) {
         return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(country));
     }
 
     @PutMapping("/country/{id}")
-    public 
+    public ResponseEntity<Country> editCountry(@RequestBody Country country, @PathVariable Long id) {
+        return ResponseEntity.of(
+                repo.findById(id)
+                        .map(oldCountry -> {
+                            oldCountry.setCapital(country.getCapital());
+                            oldCountry.setCode(country.getCode());
+                            oldCountry.setName(country.getName());
+                            oldCountry.setPopulation(country.getPopulation());
+                            oldCountry.setCurrency(Currency.getInstance(country.getCurrency()).getDisplayName());
+                            return Optional.of(repo.save(oldCountry));
+                        }).orElse(Optional.empty())
+        );
+    }
 
+    @DeleteMapping("/country/{id}")
+    public ResponseEntity<?> deleteCountry(@PathVariable Long id) {
+        if(repo.existsById(id)) {
+            repo.deleteById(id);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
 
 

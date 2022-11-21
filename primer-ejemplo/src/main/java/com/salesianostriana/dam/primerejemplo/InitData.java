@@ -35,7 +35,7 @@ public class InitData {
 
         Country germany = new Country();
         germany.setCode("de");
-        germany.setName("Germane");
+        germany.setName("Germany");
         germany.setCurrency("Euro");
         germany.setCapital("Berlín");
         germany.setPopulation(84846543);
