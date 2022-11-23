@@ -20,4 +20,5 @@ public class Monumento {
 
     private String countryCode, countryName, cityName, name, description, photoUrl;
     private double latitude, longitude;
+    //private String location; <-- El buen tratamiento de los datos de unas coordenadas.
 }
