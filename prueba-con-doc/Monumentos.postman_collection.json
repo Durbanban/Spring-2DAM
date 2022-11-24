@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "1f06fb34-bb58-415a-bf2a-8b380607b2f5",
+		"name": "Monumentos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23783919"
+	},
+	"item": [
+		{
+			"name": "add monumento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"countryCode\": \"DE\",\r\n    \"countryName\": \"Alemania\",\r\n    \"cityName\": \"Frankfurt\",\r\n    \"name\": \"Oktoberfest\",\r\n    \"description\": \"BIIRRAAAAA\",\r\n    \"photoUrl\": \"BIRRA.jpg\",\r\n    \"latitude\": 38.25456,\r\n    \"longitude\": 12.54584\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/monumento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit monumento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"countryCode\": \"FR\",\r\n    \"countryName\": \"Francia\",\r\n    \"cityName\": \"Sevilla\",\r\n    \"name\": \"La Giralda\",\r\n    \"description\": \"A ver si puedes subir hasta arriba del todo\",\r\n    \"photoUrl\": \"LaGiralda.jpg\",\r\n    \"latitude\": 18.25456,\r\n    \"longitude\": 22.54584\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/monumento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete monumento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/monumento/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all monumentos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 monumento",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
