@@ -39,23 +39,24 @@ public class MainDeMentira {
         Producto p1 = Producto
                 .builder()
                 .pvp(39.99)
-                .categoria(c2)
                 .nombre("Teclado mecánico")
                 .build();
 
         Producto p2 = Producto
                 .builder()
                 .pvp(7.99)
-                .categoria(c2)
                 .nombre("Surfers de ratón gaming")
                 .build();
 
         Producto p3 = Producto
                 .builder()
                 .pvp(799.95)
-                .categoria(c1)
                 .nombre("Tarjeta gráfica sobrepreciada")
                 .build();
+
+        p1.addToCategoria(c2);
+        p2.addToCategoria(c2);
+        p3.addToCategoria(c1);
 
         productoRepository.saveAll(List.of(p1, p2, p3));
 
