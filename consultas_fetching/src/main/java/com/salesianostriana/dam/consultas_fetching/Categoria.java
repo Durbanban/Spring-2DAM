@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 @NamedEntityGraph(
         name = "categoria-con-productos",
@@ -33,6 +32,7 @@ public class Categoria {
 
     private String nombre;
 
-    @OneToMany
+    @OneToMany(mappedBy = "categoria")
+    @Builder.Default
     private List<Producto> productos = new ArrayList<>();
 }

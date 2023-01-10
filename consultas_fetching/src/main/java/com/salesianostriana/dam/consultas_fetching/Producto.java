@@ -3,15 +3,14 @@ package com.salesianostriana.dam.consultas_fetching;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 public class Producto {
 
@@ -28,6 +27,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto")
     @Builder.Default
-    private Set<ImagenProducto> imagenes = new HashSet<>();
+    @OrderColumn(name = "id")
+    private List<ImagenProducto> imagenes = new ArrayList<>();
 
 }

@@ -18,18 +18,51 @@ public class MainDeMentira {
 
     @PostConstruct
     public void init() {
+        /*
+        Optional<Categoria> mac =
+                //categoriaRepositorio.findById(1L);
+        categoriaRepositorio.categoriaConProductos(1L);
 
-        Optional<Categoria> mac = categoriaRepository.findById(1L);
-
-        if(mac.isPresent()) {
+        if (mac.isPresent()) {
             Categoria c = mac.get();
-
+            for (Producto producto : c.getProductos()) {
+                log.info(producto.getNombre());
+            }
         }
 
-        List<Categoria> cats = categoriaRepository.findAll();
+        categoriaRepositorio.categoriasConProductos().forEach(c -> {
+            log.info("Categoria: " + c.getNombre());
+            log.info("Productos:" +  c.getProductos().stream().map(Producto::getNombre).collect(Collectors.joining(",")));
+        });
+
+        */
+
+        /*List<Categoria> cats = categoriaRepository.findDistinctByNombre("Macbook");
+
         cats.forEach(c -> {
             log.info("Categoria: " + c.getNombre());
-            log.info("Productos: " + c.getProductos().stream().map(p -> p.getNombre()).collect(Collectors.joining(", ")));
+            //log.info("Productos:" +  c.getProductos().stream().map(Producto::getNombre).collect(Collectors.joining(",")));
+            c.getProductos().forEach(p -> {
+                log.info("Producto: " + p.getNombre() + ", Imágenes: " +
+                        p.getImagenes()
+                                .stream()
+                                .map(ImagenProducto::getUrl)
+                                .collect(Collectors.joining(", ")));
+            });
         });
+
+        List<Categoria> all = categoriaRepository.findAll();
+
+        all.forEach(c -> {
+            log.info("Categoria: " + c.getNombre());
+            //log.info("Productos:" +  c.getProductos().stream().map(Producto::getNombre).collect(Collectors.joining(",")));
+        });*/
+
+        categoriaRepository.findTodoDeTodo();
+
+
+
+
+
     }
 }
