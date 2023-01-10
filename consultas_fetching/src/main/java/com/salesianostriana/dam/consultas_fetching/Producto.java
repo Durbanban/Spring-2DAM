@@ -27,7 +27,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto")
     @Builder.Default
-    @OrderColumn(name = "id")
+    //@OrderColumn(name = "id")
     private List<ImagenProducto> imagenes = new ArrayList<>();
 
 }

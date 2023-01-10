@@ -12,7 +12,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
     @Query("""
             SELECT DISTINCT p FROM Producto p
-            LEFT JOIN Categoria 
+            LEFT JOIN FETCH p.imagenes 
             """)
-    List<Producto> productosConImagenes():
+    List<Producto> productosConImagenes();
 }

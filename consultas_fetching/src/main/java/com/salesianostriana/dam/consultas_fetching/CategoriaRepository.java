@@ -29,13 +29,6 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
     @EntityGraph("categoria-con-productos")
     Optional<Categoria> findById(Long id);
 
-    @Query("""
-            SELECT DISTINCT c FROM Categoria c
-            LEFT JOIN FETCH c.productos p
-            LEFT JOIN FETCH p.imagenes
-            """)
-    List<Categoria> findTodoDeTodo();
-
 
 
 

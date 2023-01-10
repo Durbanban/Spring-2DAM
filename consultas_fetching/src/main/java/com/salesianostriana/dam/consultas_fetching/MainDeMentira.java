@@ -16,6 +16,8 @@ public class MainDeMentira {
 
     private final CategoriaRepository categoriaRepository;
 
+    private final CategoriaService categoriaService;
+
     @PostConstruct
     public void init() {
         /*
@@ -58,11 +60,29 @@ public class MainDeMentira {
             //log.info("Productos:" +  c.getProductos().stream().map(Producto::getNombre).collect(Collectors.joining(",")));
         });*/
 
-        categoriaRepository.findTodoDeTodo();
+        categoriaService.findTodoDeTodo().forEach(this::printCategoria);
 
 
 
+    }
 
-
+    public void printCategoria(Categoria c) {
+        System.out.println("Categoria: " + c.getNombre());
+        System.out.println("Productos");
+        System.out.println("==========");
+        c.getProductos().forEach(p -> {
+            System.out.println("Producto: " +  p.getNombre());
+            if (!p.getImagenes().isEmpty())
+                /*System.out.println("Imágenes:" + p.getImagenes()
+                        .stream()
+                        .map(ImagenProducto::getUrl)
+                        .collect(Collectors.joining(", "))
+                );*/
+                for(ImagenProducto im : p.getImagenes()) {
+                    if (im != null)
+                        System.out.println("Imagen:" + im.getUrl());
+                }
+        });
+        System.out.println("\n");
     }
 }

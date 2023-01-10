@@ -13,8 +13,12 @@ public class CategoriaService {
     private final CategoriaRepository categoriaRepository;
     private final ProductoRepository productoRepository;
 
+    @Transactional
     public List<Categoria> findTodoDeTodo() {
-        List<Categoria> resultado = productoRepository.productosConImagenes();
-        return resultado
+        List<Categoria> resultado = categoriaRepository.categoriasConProductos();
+
+        if(!resultado.isEmpty())
+            productoRepository.productosConImagenes();
+        return resultado;
     }
 }
